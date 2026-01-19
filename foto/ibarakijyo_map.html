@@ -1,0 +1,395 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Observation Points Map - 88 Points</title>
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
+    <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: Arial, sans-serif;
+        }
+        #map {
+            width: 100%;
+            height: 100vh;
+        }
+        .title {
+            position: fixed;
+            top: 10px;
+            left: 50px;
+            background: white;
+            padding: 15px 20px;
+            border: 2px solid #333;
+            border-radius: 5px;
+            z-index: 9999;
+            box-shadow: 3px 3px 10px rgba(0,0,0,0.3);
+        }
+        .title h2 {
+            margin: 0 0 5px 0;
+            font-size: 18pt;
+        }
+        .title p {
+            margin: 0;
+            font-size: 11pt;
+            color: #666;
+        }
+        .info-box {
+            position: fixed;
+            bottom: 10px;
+            left: 10px;
+            background: rgba(255, 255, 255, 0.95);
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            z-index: 9999;
+            font-size: 10pt;
+            max-width: 250px;
+        }
+        .legend {
+            position: fixed;
+            top: 100px;
+            right: 10px;
+            background: white;
+            padding: 10px;
+            border: 2px solid #333;
+            border-radius: 5px;
+            z-index: 9999;
+            font-size: 10pt;
+        }
+        .legend-item {
+            margin: 5px 0;
+        }
+        .legend-symbol {
+            display: inline-block;
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+            background: red;
+            border: 2px solid red;
+            margin-right: 8px;
+        }
+        .special-tooltip {
+            background: rgba(0, 123, 255, 0.9) !important;
+            border: 2px solid #ffd700 !important;
+            color: white !important;
+            font-weight: bold !important;
+            font-size: 11pt !important;
+        }
+    </style>
+</head>
+<body>
+    <div class="title">
+        <h2>Observation Points Map</h2>
+        <p>88 Points + 1 Special Marker</p>
+    </div>
+
+    <div class="legend">
+        <div class="legend-item">
+            <span class="legend-symbol"></span>
+            <span>Observation Point</span>
+        </div>
+        <div style="margin-top: 8px; padding-top: 8px; border-top: 1px solid #ccc;">
+            <small>Click markers for details</small>
+        </div>
+    </div>
+
+    <div id="map"></div>
+
+    <script>
+        // 坐标数据
+        const coordinates = [
+        {id: 1.0, lat: 36.034629, lon: 140.166359},
+        {id: 2.0, lat: 36.36246, lon: 140.113566},
+        {id: 3.0, lat: 36.130133, lon: 140.09091},
+        {id: 4.0, lat: 36.120585, lon: 140.247795},
+        {id: 5.0, lat: 36.198064, lon: 139.817519},
+        {id: 6.0, lat: 35.907558, lon: 140.648936},
+        {id: 7.0, lat: 36.030201, lon: 140.225529},
+        {id: 8.0, lat: 36.397143, lon: 140.429699},
+        {id: 9.0, lat: 36.214794, lon: 140.31406},
+        {id: 10.0, lat: 36.367253, lon: 140.470233},
+        {id: 11.0, lat: 36.463128, lon: 140.585192},
+        {id: 12.0, lat: 36.125172, lon: 140.51799},
+        {id: 13.0, lat: 35.932789, lon: 140.206692},
+        {id: 14.0, lat: 36.495431, lon: 140.612903},
+        {id: 15.0, lat: 36.011768, lon: 140.587835},
+        {id: 16.0, lat: 35.992054, lon: 140.282683},
+        {id: 17.0, lat: 35.992054, lon: 140.282683},
+        {id: 18.0, lat: 36.416221, lon: 140.521835},
+        {id: 19.0, lat: 36.020272, lon: 140.223438},
+        {id: 20.0, lat: 36.056773, lon: 140.137439},
+        {id: 21.0, lat: 36.106423, lon: 140.477159},
+        {id: 22.0, lat: 36.241218, lon: 139.938026},
+        {id: 23.0, lat: 36.443257, lon: 140.501106},
+        {id: 24.0, lat: 36.17717, lon: 140.090803},
+        {id: 25.0, lat: 36.186882, lon: 139.730158},
+        {id: 26.0, lat: 36.117063, lon: 139.972635},
+        {id: 27.0, lat: 36.41464, lon: 140.498024},
+        {id: 28.0, lat: 36.123585, lon: 140.161484},
+        {id: 29.0, lat: 36.193616, lon: 140.345875},
+        {id: 30.0, lat: 36.414079, lon: 140.488927},
+        {id: 31.0, lat: 36.414079, lon: 140.488927},
+        {id: 32.0, lat: 35.984245, lon: 140.614399},
+        {id: 33.0, lat: 36.476006, lon: 140.288457},
+        {id: 34.0, lat: 36.214794, lon: 140.31406},
+        {id: 35.0, lat: 36.214794, lon: 140.31406},
+        {id: 36.0, lat: 36.214794, lon: 140.31406},
+        {id: 37.0, lat: 36.099366, lon: 140.205802},
+        {id: 38.0, lat: 36.388663, lon: 140.424391},
+        {id: 39.0, lat: 35.967919, lon: 140.649021},
+        {id: 40.0, lat: 36.529622, lon: 140.619653},
+        {id: 41.0, lat: 36.714489, lon: 140.71203},
+        {id: 42.0, lat: 35.923745, lon: 140.144392},
+        {id: 43.0, lat: 35.96337, lon: 140.629937},
+        {id: 44.0, lat: 36.062871, lon: 140.181611},
+        {id: 45.0, lat: 36.443257, lon: 140.501106},
+        {id: 46.0, lat: 35.9014, lon: 140.648353},
+        {id: 47.0, lat: 36.574393, lon: 140.636044},
+        {id: 48.0, lat: 36.529622, lon: 140.619653},
+        {id: 49.0, lat: 36.306783, lon: 139.970366},
+        {id: 50.0, lat: 36.289664, lon: 139.917558},
+        {id: 51.0, lat: 36.055196, lon: 139.87606},
+        {id: 52.0, lat: 36.062871, lon: 140.181611},
+        {id: 53.0, lat: 36.529622, lon: 140.619653},
+        {id: 54.0, lat: 36.334171, lon: 140.46732},
+        {id: 55.0, lat: 36.405845, lon: 140.436104},
+        {id: 56.0, lat: 36.117063, lon: 139.972635},
+        {id: 57.0, lat: 36.174663, lon: 140.258415},
+        {id: 58.0, lat: 36.214794, lon: 140.31406},
+        {id: 59.0, lat: 35.96337, lon: 140.629937},
+        {id: 60.0, lat: 36.125172, lon: 140.51799},
+        {id: 61.0, lat: 36.055196, lon: 139.87606},
+        {id: 62.0, lat: 36.125172, lon: 140.51799},
+        {id: 63.0, lat: 36.214794, lon: 140.31406},
+        {id: 64.0, lat: 36.386788, lon: 140.418528},
+        {id: 65.0, lat: 36.099366, lon: 140.205802},
+        {id: 66.0, lat: 36.416221, lon: 140.521835},
+        {id: 67.0, lat: 36.035256, lon: 140.207231},
+        {id: 68.0, lat: 36.24958, lon: 140.288726},
+        {id: 69.0, lat: 36.568902, lon: 140.63517},
+        {id: 70.0, lat: 36.578553, lon: 140.625729},
+        {id: 71.0, lat: 36.323022, lon: 140.31862},
+        {id: 72.0, lat: 36.172484, lon: 139.960579},
+        {id: 73.0, lat: 36.214794, lon: 140.31406},
+        {id: 74.0, lat: 35.938567, lon: 140.19922},
+        {id: 75.0, lat: 36.1921, lon: 139.732205},
+        {id: 76.0, lat: 36.051849, lon: 140.110432},
+        {id: 77.0, lat: 36.190957, lon: 140.28857},
+        {id: 78.0, lat: 36.330934, lon: 140.032132},
+        {id: 79.0, lat: 36.125823, lon: 140.241518},
+        {id: 80.0, lat: 36.375599, lon: 140.496617},
+        {id: 81.0, lat: 36.385557, lon: 140.406779},
+        {id: 82.0, lat: 36.038334, lon: 139.887413},
+        {id: 83.0, lat: 36.182453, lon: 139.97256},
+        {id: 84.0, lat: 36.067896, lon: 140.189919},
+        {id: 85.0, lat: 36.39161, lon: 140.560979},
+        {id: 86.0, lat: 36.559063, lon: 140.404687},
+        {id: 87.0, lat: 36.350008, lon: 140.309939},
+        {id: 88.0, lat: 36.350008, lon: 140.309939},
+    ];
+
+        // 计算中心点
+        const centerLat = 36.225613;
+        const centerLon = 140.31252792045453;
+
+        console.log('Initializing map...');
+        console.log('Center:', centerLat, centerLon);
+        console.log('Total points:', coordinates.length);
+
+        // 创建地图
+        const map = L.map('map', {
+            center: [centerLat, centerLon],
+            zoom: 9,
+            zoomControl: true
+        });
+
+        // 添加OpenStreetMap瓦片层
+        const osmLayer = L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+            attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors',
+            maxZoom: 19,
+            minZoom: 5
+        }).addTo(map);
+
+        // 创建图层组
+        const pointsLayer = L.layerGroup().addTo(map);
+        const gridLayer = L.layerGroup();
+
+        // 添加标记点
+        coordinates.forEach(coord => {
+            // 红色圆形标记
+            const circle = L.circleMarker([coord.lat, coord.lon], {
+                radius: 8,
+                color: 'red',
+                fillColor: '#ff0000',
+                fillOpacity: 0.8,
+                weight: 2
+            }).addTo(pointsLayer);
+
+            // 弹出窗口
+            circle.bindPopup(`
+                <div style="font-size: 11pt;">
+                    <strong>Point ${coord.id}</strong><br>
+                    Latitude: ${coord.lat.toFixed(6)}°N<br>
+                    Longitude: ${coord.lon.toFixed(6)}°E
+                </div>
+            `);
+
+            // 鼠标悬停提示
+            circle.bindTooltip(`Point ${coord.id}`, {
+                permanent: false,
+                direction: 'top'
+            });
+
+            // 数字标签
+            const label = L.marker([coord.lat, coord.lon], {
+                icon: L.divIcon({
+                    className: 'point-label',
+                    html: `<div style="
+                        font-size: 11pt;
+                        color: white;
+                        font-weight: bold;
+                        text-shadow:
+                            -1px -1px 0 #000,
+                            1px -1px 0 #000,
+                            -1px 1px 0 #000,
+                            1px 1px 0 #000;
+                        margin-left: 12px;
+                        margin-top: -8px;
+                        pointer-events: none;
+                    ">${coord.id}</div>`,
+                    iconSize: [20, 20]
+                })
+            }).addTo(pointsLayer);
+        });
+
+        // 添加特殊标记点
+        
+        // 特殊标记点
+        const specialMarker = L.marker([36.056666666666665, 140.125], {
+            icon: L.icon({
+                iconUrl: 'data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMzIiIGhlaWdodD0iNDgiIHZpZXdCb3g9IjAgMCAzMiA0OCIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj48cGF0aCBkPSJNMTYgMEMyLjkgMCAwIDcuMiAwIDE2YzAgMTIgMTYgMzIgMTYgMzJzMTYtMjAgMTYtMzJDMzIgNy4yIDI5LjEgMCAxNiAweiIgZmlsbD0iIzAwN2JmZiIvPjxjaXJjbGUgY3g9IjE2IiBjeT0iMTYiIHI9IjgiIGZpbGw9IndoaXRlIi8+PHBhdGggZD0iTTE2IDEwbDIgNmg2bC01IDRsMiA2LTUtNC01IDQgMi02LTUtNGg2eiIgZmlsbD0iI2ZmZDcwMCIvPjwvc3ZnPg==',
+                iconSize: [32, 48],
+                iconAnchor: [16, 48],
+                popupAnchor: [0, -48]
+            })
+        }).addTo(pointsLayer);
+
+        specialMarker.bindPopup(`
+            <div style="font-size: 12pt;">
+                <strong style="color: #007bff;">★ Reference Point (36°03.4'N, 140°07.5'E)</strong><br>
+                <strong>Latitude:</strong> 36.056667°N<br>
+                <strong>Longitude:</strong> 140.125000°E<br>
+                <em style="color: #666;">Special Reference Point</em>
+            </div>
+        `);
+
+        specialMarker.bindTooltip(`Reference Point (36°03.4'N, 140°07.5'E)`, {
+            permanent: true,
+            direction: 'top',
+            className: 'special-tooltip'
+        });
+
+
+        // 添加网格线
+        const latStep = 0.1;
+        const lonStep = 0.1;
+        const latMin = 35.8;
+        const latMax = 36.900000000000006;
+        const lonMin = 139.6;
+        const lonMax = 140.89999999999998;
+
+        // 纬线
+        for (let lat = latMin; lat <= latMax; lat += latStep) {
+            L.polyline([[lat, lonMin], [lat, lonMax]], {
+                color: 'gray',
+                weight: 1,
+                opacity: 0.4,
+                dashArray: '5, 5'
+            }).addTo(gridLayer);
+
+            // 纬度标签
+            L.marker([lat, lonMin + 0.02], {
+                icon: L.divIcon({
+                    className: 'grid-label',
+                    html: `<div style="
+                        font-size: 9pt;
+                        color: #333;
+                        background: rgba(255, 255, 255, 0.8);
+                        padding: 2px 5px;
+                        border-radius: 3px;
+                        border: 1px solid #ccc;
+                        white-space: nowrap;
+                    ">${lat.toFixed(2)}°N</div>`
+                })
+            }).addTo(gridLayer);
+        }
+
+        // 经线
+        for (let lon = lonMin; lon <= lonMax; lon += lonStep) {
+            L.polyline([[latMin, lon], [latMax, lon]], {
+                color: 'gray',
+                weight: 1,
+                opacity: 0.4,
+                dashArray: '5, 5'
+            }).addTo(gridLayer);
+
+            // 经度标签
+            L.marker([latMin + 0.02, lon], {
+                icon: L.divIcon({
+                    className: 'grid-label',
+                    html: `<div style="
+                        font-size: 9pt;
+                        color: #333;
+                        background: rgba(255, 255, 255, 0.8);
+                        padding: 2px 5px;
+                        border-radius: 3px;
+                        border: 1px solid #ccc;
+                        white-space: nowrap;
+                    ">${lon.toFixed(2)}°E</div>`
+                })
+            }).addTo(gridLayer);
+        }
+
+        // 添加图层控制
+        const overlays = {
+            "Observation Points": pointsLayer,
+            "Grid Lines": gridLayer
+        };
+
+        L.control.layers(null, overlays, {
+            position: 'topright',
+            collapsed: false
+        }).addTo(map);
+
+        // 默认显示网格线
+        gridLayer.addTo(map);
+
+        // 添加比例尺
+        L.control.scale({
+            imperial: false,
+            position: 'bottomright'
+        }).addTo(map);
+
+        // 鼠标位置显示
+        const infoBox = L.control({position: 'bottomleft'});
+        infoBox.onAdd = function(map) {
+            this._div = L.DomUtil.create('div', 'info-box');
+            this._div.innerHTML = '<strong>Mouse Position:</strong><br>Move mouse over map';
+            return this._div;
+        };
+        infoBox.addTo(map);
+
+        map.on('mousemove', function(e) {
+            infoBox._div.innerHTML =
+                '<strong>Mouse Position:</strong><br>' +
+                'Lat: ' + e.latlng.lat.toFixed(6) + '°N<br>' +
+                'Lon: ' + e.latlng.lng.toFixed(6) + '°E';
+        });
+
+        console.log('Map loaded successfully!');
+    </script>
+</body>
+</html>

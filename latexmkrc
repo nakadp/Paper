@@ -1,0 +1,10 @@
+$pdf_mode = 5; # 0: dvi, 1: pdflatex, 2: ps, 3: dvi, 4: dvi, 5: xelatex
+$latex = 'latex %O %S';
+$bibtex = 'bibtex %O %S';
+$makeindex = 'makeindex %O %S';
+$dvipdf = 'dvipdfmx %O %S';
+$dvips = 'dvips %O -o %D %S';
+$xelatex = 'xelatex -no-pdf -file-line-error -halt-on-error %O %S';
+$xdvipdfmx = 'xdvipdfmx -q -E -o %D %O %S';
+$preview_continuous_mode = 0;
+$clean_ext = 'paux lof lot toc bbl blg aux log out fls fdb_latexmk xdv';

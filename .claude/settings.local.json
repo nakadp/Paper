@@ -1,0 +1,15 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(platex:*)",
+      "Bash(dvipdfmx:*)",
+      "Bash(dir:*)",
+      "Bash(mkdir:*)",
+      "Bash(del *.fls)",
+      "Bash(latexmk:*)",
+      "Bash(ls:*)",
+      "Bash(tasklist:*)",
+      "Bash(findstr:*)"
+    ]
+  }
+}

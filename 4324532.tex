@@ -211,10 +211,10 @@
 \newcommand{\academicyear}{2026年度}
 \newcommand{\thesistitleJP}{題目：メガソーラーにおける気象庁データを活用した}
 \newcommand{\thesistitleJPcontinued}{発電性能評価および定常日陰を検出手法}
-\newcommand{\supervisor}{指導教員  植田 譲}
+\newcommand{\supervisor}{指導教員\hspace{1em}植田\hspace{0.5em}譲}
 \newcommand{\department}{東京理科大学工学研究科電気工学専攻}
 \newcommand{\studentid}{4324532}
-\newcommand{\studentname}{氏名  熊 維振}
+\newcommand{\studentname}{氏名\hspace{1em}熊\hspace{0.5em}維振}
 \newcommand{\thesistitleEN}{Performance Evaluation and Stationary Shading Detection Method for Large-Scale PV Plants Using Japan Meteorological Agency Data}
 \newcommand{\studentnameEN}{Weizhen Xiong (\studentid)}
 \newcommand{\adviserEN}{Adviser : Professor Yuzuru Ueda}
@@ -242,14 +242,14 @@
     \vfill % 弹性间距
     
     {\huge \thesistitleJP} \\
-    \vspace{0.5cm}
+    % \vspace{0.5cm}
     {\huge \thesistitleJPcontinued} \\
     
     \vfill % 弹性间距
     
     {\Large \supervisor} \\
     \vspace{1.5cm}
-    {\Large 学籍番号  \studentid} \\
+    {\Large 学籍番号\hspace{1em}\studentid} \\
     \vspace{0.5cm}
     {\Large \studentname} \\
     
@@ -273,18 +273,27 @@
 \thispagestyle{abstractstyle}
 
 \begin{center}
-    \vspace*{1.0cm}
+    % \vspace*{1.0cm}
     {\fontsize{18pt}{24pt}\selectfont \bfseries \thesistitleEN \par}
-    \vspace{2.0cm}
+    \vspace{0.5cm}
     {\large \studentnameEN} \\[0.5em]
     {\large \adviserEN}\\
-    \vspace{2.0cm}
+    \vspace{0.4cm}
     {\large \bfseries Abstract}
-    \vspace{1.0cm}
+    \vspace{0.3cm}
 \end{center}
 
-\noindent
-In recent years, there is a growing interest in environmentally friendly renewable energy...
+The ubiquity of small-to-medium-scale photovoltaic (PV) facilities, often devoid of high-precision pyranometers due to economic constraints, has precipitated a critical operational challenge: distinguishing between power deficits caused by meteorological intermittency and those stemming from equipment degradation remains ambiguous. Addressing this diagnostic gap, this thesis articulates a pioneering "sensorless" framework that effectively repurposes existing PV arrays into a virtual irradiance sensor network, thereby obviating the reliance on external meteorological instrumentation.
+
+The methodological architecture is underpinned by three synergistic innovations. First, a hybrid estimation model is synthesized by amalgamating physical modeling with data-driven correction techniques. Through the extraction of system-specific loss coefficients ($K_0$) and degradation vectors from historical clear-sky performance, this model normalizes inter-system heterogeneity and rectifies non-linearities inherent in low-irradiance conditions. Second, to ensure resilience against localized anomalies, a Dynamic Selection Algorithm is introduced. This mechanism autonomously aggregates estimates from geographically dispersed PV fleets, leveraging a deviation-based "Quality Score" to dynamically filter out compromised data sources affected by partial shading or device failure. Third, an explainable anomaly detection protocol employing K-means clustering and SHAP analysis is implemented to rigorously disentangle static structural shading from stochastic weather patterns.
+
+Empirical validation was rigorously conducted across two distinct environments: a controlled experimental site in Hokuto City (Dataset A) and a heterogeneous residential fleet in Ibaraki Prefecture (Dataset B). In the controlled setting, the method achieved superior estimation accuracy following the calibration of an annual degradation rate of $-1.31\%$. Conversely, within the sensor-limited residential fleet, the algorithm demonstrated exceptional robustness; despite the absence of thermal and voltage telemetry, it successfully internalized thermal losses into the system performance parameters ($L_{sys}$), yielding a Mean Bias Error (MBE) of $-3.6 \mathrm{W/m^2}$ relative to regional ground-truth observations. Furthermore, the analytical framework successfully reverse-engineered the spatial configuration and timing of obstruction-induced shading without prior geometric knowledge.
+
+Collectively, these findings substantiate the capability of the proposed data-centric approach to generate carrier-grade irradiance data and facilitate precise fault diagnosis utilizing solely existing generation records. This research establishes a vital technological foundation for the digital transformation (DX) of Operation and Maintenance (O\&M) strategies, contributing to the long-term resilience and stability of renewable energy infrastructure.
+
+\noindent 
+\textbf{Keywords:} Global Horizontal Irradiance estimation, Photovoltaic Systems, sensorless monitoring, Dynamic Selection, stationary shading detection
+
 \clearpage
 
 %========================================================================
@@ -2079,11 +2088,11 @@ Dataset Aと同様に、ここでも日射強度に応じた系統的なバイ�
 \chapter*{謝辞 (Acknowledgments)}
 \addcontentsline{toc}{chapter}{謝辞}
 
-本研究を遂行するにあたり、東京理科大学工学部電気工学科の植田教授には、研究テーマの着想から論文の執筆に至るまで、終始懇切丁寧なご指導と多大なるご鞭撻を賜りました。研究に対する厳しくも温かいご教示をいただいたことに対し、ここに深く感謝の意を表します。
+本研究を遂行するにあたり、東京理科大学工学部電気工学科の植田教授には、研究テーマの着想から論文の執筆に至るまで、終始懇切丁寧なご指導と多大なるご鞭撻を賜った。研究に対する厳しくも温かいご教示をいただいたことに対し、ここに深く感謝の意を表する。
 
-また、日々の研究活動において、有益なご助言と活発な議論をいただいた植田研究室の皆様に心より御礼申し上げます。皆様との日頃の討論や、研究室の恵まれた環境があったからこそ、本研究を完遂することができました。
+また、日々の研究活動において、有益なご助言と活発な議論をいただいた植田研究室の皆様に心より御礼申し上げる。皆様との日頃の討論や、研究室の恵まれた環境があったからこそ、本研究を完遂することができた。
 
-最後に、本研究を進めるにあたりご支援いただいた関係者各位、ならびに長い学生生活を支えてくれた家族に深く感謝いたします。
+最後に、本研究を進めるにあたりご支援いただいた関係者各位、ならびに長い学生生活を支えてくれた家族に深く感謝する。
 
 %========================================================================
 % 参考文献 (References)

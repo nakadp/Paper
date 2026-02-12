@@ -1,11 +1,11 @@
 % !TEX program = xelatex
 % !TEX encoding = UTF-8
-\documentclass[a4paper,11pt,fleqn,ja=standard,xelatex]{bxjsreport}
+\documentclass[a4paper,11pt,fleqn,ja=standard,xelatex,twoside]{bxjsreport}
 
 %========================================================================
 % 1. 基础包加载
 %========================================================================
-\usepackage{fix-cm} % 支持任意Computer Modern字体大小，避免字体替换警告
+\usepackage{fix-cm} % 支持任意Computer Modern字体大小, 避免字体替换警告
 \usepackage{graphicx}
 \usepackage{amsmath,amssymb}
 \usepackage{bm}
@@ -16,7 +16,7 @@
 \usepackage{here}
 \usepackage{geometry}
 \usepackage{setspace}
-\usepackage{xcolor} % 提前加载xcolor包，避免后续包重复加载警告
+\usepackage{xcolor} % 提前加载xcolor包, 避免后续包重复加载警告
 \usepackage{caption}
 \usepackage{subcaption}
 \usepackage{cite}
@@ -57,7 +57,7 @@
     headheight=16pt,   % 页眉高度
     headsep=25pt,      % 页眉到正文的距离（增大以确保页眉浮在上边距空白区域）
     footskip=30pt,     % 正文底部到页码的距离（页码浮在下边距空白区域内）
-    % 移除 includehead，让页边距从正文开始计算，页眉和页码浮在边距空白区域
+    % 移除 includehead, 让页边距从正文开始计算, 页眉和页码浮在边距空白区域
 }
 \setlength{\parindent}{1\zw} % 首行缩进1字符
 \setlength{\parskip}{0pt} % 段落间距为0
@@ -72,7 +72,7 @@
 \setcounter{secnumdepth}{3} % 编号深度到 subsection (1.1.1)
 \setcounter{tocdepth}{3}    % 目录显示深度到 subsection
 
-% --- 调整编号宽度，防止数字重叠 ---
+% --- 调整编号宽度, 防止数字重叠 ---
 \renewcommand{\cftchapnumwidth}{1.5em}
 \renewcommand{\cftsecnumwidth}{2.0em}
 \renewcommand{\cftsubsecnumwidth}{2.5em}
@@ -92,7 +92,7 @@
 
 % --- 设置目录的行距和引导点密度 ---
 \renewcommand{\cftdot}{.} % 引导点字符
-\renewcommand{\cftdotsep}{1} % 引导点间距(默认4.5，设为1使点更密集)
+\renewcommand{\cftdotsep}{1} % 引导点间距(默认4.5, 设为1使点更密集)
 \renewcommand{\bibname}{参考文献 (References)}
 
 % --- 设置图注格式为1-1而不是 1.1 ---
@@ -109,9 +109,9 @@
             shape=circle,
             draw=black,
             line width=0.4pt,    % 线条细度
-            inner sep=0.1pt,     % 【关键】内边距很小，圆圈紧贴数字
-            minimum size=1.1em,  % 限制最小直径，防止数字"1"变成椭圆
-            text height=1.4ex,   % 稍微压低高度，保证垂直居中
+            inner sep=0.1pt,     % 【关键】内边距很小, 圆圈紧贴数字
+            minimum size=1.1em,  % 限制最小直径, 防止数字"1"变成椭圆
+            text height=1.4ex,   % 稍微压低高度, 保证垂直居中
             text depth=0.1ex
         ] (char) {%
             \small\rmfamily      % 【关键】使用 small (中等大小) + 衬线字体
@@ -176,7 +176,7 @@
 % 5. 页眉页脚设置
 %========================================================================
 
-% 1. 强制清除所有预设，防止右上角页码出现
+% 1. 强制清除所有预设, 防止右上角页码出现
 \fancyhf{} 
 
 % 2. 定义 fancy 样式
@@ -196,7 +196,7 @@
 }
 
 % 4. 【关键步骤】解决章节首页不显示页眉的问题
-% titlesec 宏包提供的命令，强制 \chapter 使用 fancy 样式而不是默认的 plain
+% titlesec 宏包提供的命令, 强制 \chapter 使用 fancy 样式而不是默认的 plain
 \assignpagestyle{\chapter}{fancy} 
 
 % 5. 修复章节标记格式
@@ -233,7 +233,7 @@
 %--- 封面 (Title Page) - 修复版 ---
 \begin{titlepage}
     \centering
-    % 使用 \vfill 进行弹性布局，防止溢出
+    % 使用 \vfill 进行弹性布局, 防止溢出
     \vspace*{1cm}
     {\Large \academicyear} \\
     \vspace{0.5cm}
@@ -310,7 +310,7 @@ Collectively, these findings substantiate the capability of the proposed data-ce
 \pagenumbering{arabic}
 \setcounter{page}{1}
 
-% ★★★ 启用页眉页脚设置（页眉显示章节，页码底部居中）★★★
+% ★★★ 启用页眉页脚设置（页眉显示章节, 页码底部居中）★★★
 \pagestyle{fancy}
 
 %========================================================================
@@ -324,9 +324,9 @@ Collectively, these findings substantiate the capability of the proposed data-ce
 \label{sec:研究背景} 
 %------------------------------------------------------------------------
 
-産業革命以降、化石燃料の大量消費に伴い温室効果ガス（Greenhouse Gas: GHG）排出量は着実に増加している。気候変動に関する政府間パネル（Intergovernmental Panel on Climate Change: IPCC）の第6次評価報告書は、世界の平均気温が既に約1.1℃上昇していると指摘し、気候災害の深刻化を警告している[1]。日本政府も2020年に「2050年カーボンニュートラル」を宣言し、2050年までのGHG排出実質ゼロ、および2030年度の46\%削減（2013年度比）という目標を掲げている[2]。
+産業革命以降、化石燃料の大量消費に伴い温室効果ガス（Greenhouse Gas: GHG）排出量は着実に増加している。気候変動に関する政府間パネル（Intergovernmental Panel on Climate Change: IPCC）の第6次評価報告書は、世界の平均気温が既に約1.1℃上昇していると指摘し、気候災害の深刻化を警告している\cite{ref1}。日本政府も2020年に「2050年カーボンニュートラル」を宣言し、2050年までのGHG排出実質ゼロ、および2030年度の46\%削減（2013年度比）という目標を掲げている\cite{ref2}。
 
-日本のエネルギー政策は、2011年の東日本大震災を契機に大きく転換した。震災後の原子力発電所停止に伴い、2014年度には化石燃料（火力発電）への依存度が約88\%まで上昇し、エネルギー安全保障と二酸化炭素（CO2）排出削減の両面で課題となった[3]。この解決策として、2012年に導入された固定価格買取制度（Feed-in Tariff: FIT）により、再生可能エネルギー、とりわけ太陽光発電（Photovoltaic: PV）の導入が急速に進展した。資源エネルギー庁の『エネルギー白書2024』によれば、2022年度の電源構成における再生可能エネルギー比率は約21.7％に達し、そのうちPVは約9.2％を占める主要電源へと成長している[3]。政府の第6次エネルギー基本計画においても、2030年度までに再生可能エネルギー比率を36-38％へ高める目標が示されており[4]、PVの更なる拡大と安定的運用が求められている。
+日本のエネルギー政策は、2011年の東日本大震災を契機に大きく転換した。震災後の原子力発電所停止に伴い、2014年度には化石燃料（火力発電）への依存度が約88\%まで上昇し、エネルギー安全保障と二酸化炭素（CO2）排出削減の両面で課題となった\cite{ref3}。この解決策として、2012年に導入された固定価格買取制度（Feed-in Tariff: FIT）により、再生可能エネルギー、とりわけ太陽光発電（Photovoltaic: PV）の導入が急速に進展した。資源エネルギー庁の『エネルギー白書2024』によれば、2022年度の電源構成における再生可能エネルギー比率は約21.7％に達し、そのうちPVは約9.2％を占める主要電源へと成長している\cite{ref3}。政府の第6次エネルギー基本計画においても、2030年度までに再生可能エネルギー比率を36-38％へ高める目標が示されており\cite{ref4}、PVの更なる拡大と安定的運用が求められている。
 
 FIT制度開始から10年以上が経過し、図\ref{fig:world_pv_growth}に示すように国内では長期稼働するPVシステムが増加している。これに伴い、経年劣化（Potential Induced Degradation: PID等）や故障による発電性能の低下が顕在化しており、適切な運用・保守（Operation and Maintenance: O\&M）の重要性が高まっている。PVシステムの性能を適正に評価するには、その地点の理論的な発電ポテンシャルである全天日射量（Global Horizontal Irradiance: GHI）の正確なデータが不可欠である。
 
@@ -364,7 +364,7 @@ FIT制度開始から10年以上が経過し、図\ref{fig:world_pv_growth}に�
     単一のシステムに依存した場合、そのシステム自体に故障や影が発生すると推定全体が破綻するリスクがある。そこで、近隣に存在する複数のシステムを仮想的なセンサーネットワークとして扱い、互いの整合性に基づいて、その瞬間に最も信頼できる推定値を動的に選択および合成する手法を開発する。
     
     \item \textbf{定常日陰の検出と要因分析}: \\
-    推定された日射量と実際の発電量との間に生じる誤差を詳細に解析することで、気象由来の出力変動と、建物や樹木などの構造物による定常的な影を明確に区別する。機械学習であるクラスタリングおよびSHAP分析を用いることで、図面情報がない既設サイトにおいても、誤差の発生要因が気象要因か構造的要因かを判別し、障害物の位置や影響時間を特定することを可能にする。
+    推定された日射量と実際の発電量との間に生じる誤差を詳細に解析することで、気象由来の出力変動と、建物や樹木などの構造物による定常的な影を明確に区別する。機械学習であるクラスタリングおよびSHAP分析を用いることで、図面情報がない既設サイトにおいても、誤差の発生要因が気象要因か構造的要因かを判別し、障害物の位置や影響時間を特定することを可能にする\cite{ref12}。
 \end{enumerate}
 
 %------------------------------------------------------------------------
@@ -399,19 +399,19 @@ FIT制度開始から10年以上が経過し、図\ref{fig:world_pv_growth}に�
 \label{sec:日射} 
 %------------------------------------------------------------------------
 
-太陽から射出するエネルギーはほぼ一定であるが，地表面に入射するエネルギー量は空間的にも時間的にも変動している。この要因は天文的要素と気象的要素に分けられ，前者は観測地点の緯度や観測時刻等の必要な入力値が定まれば計算によって得られる。
+太陽から射出するエネルギーはほぼ一定であるが, 地表面に入射するエネルギー量は空間的にも時間的にも変動している。この要因は天文的要素と気象的要素に分けられ, 前者は観測地点の緯度や観測時刻等の必要な入力値が定まれば計算によって得られる。
 
-日射を測定し定量的に扱うにあたっては，水平面日射量$G \ [\mathrm{W/m^2}]$と日射量$H \ [\mathrm{Wh/m^2}]$がよく用いられる。水平面日射量は表面の単位面積あたりに，単位時間に太陽から入射する放射エネルギーとして定義され，日射量はある一定期間(1時間，1日など)の水平面日射量の積分値として定義される。[6]
+日射を測定し定量的に扱うにあたっては, 水平面日射量$G \ [\mathrm{W/m^2}]$と日射量$H \ [\mathrm{Wh/m^2}]$がよく用いられる。水平面日射量は表面の単位面積あたりに, 単位時間に太陽から入射する放射エネルギーとして定義され, 日射量はある一定期間(1時間, 1日など)の水平面日射量の積分値として定義される。\cite{ref6}
 
-図\ref{fig:solar_radiation}で示したように、大気の上端に入射した日射は，大気物質による散乱と吸収の効果を受ける。そして一部は再び宇宙空間に反射し，一部は大気物質に直接吸収され，残りの部分が地表面に入射する。この地表面に入射する日射は次の 3 つの成分に大別される。
+図\ref{fig:solar_radiation}で示したように、大気の上端に入射した日射は, 大気物質による散乱と吸収の効果を受ける。そして一部は再び宇宙空間に反射し, 一部は大気物質に直接吸収され, 残りの部分が地表面に入射する。この地表面に入射する日射は次の 3 つの成分に大別される。
 
 直達成分：太陽から太陽光線に垂直な入射面へ直接到達する成分。
 
-散乱成分：太陽光線が大気を通過する間に，空気分子・雲・エアロゾル粒子などによって散乱されて計測面に到達する成分。
+散乱成分：太陽光線が大気を通過する間に, 空気分子・雲・エアロゾル粒子などによって散乱されて計測面に到達する成分。
 
-反射成分：直達・散乱成分が地表面に到達した際に，地表面で反射して計測面に到達する成分。
+反射成分：直達・散乱成分が地表面に到達した際に, 地表面で反射して計測面に到達する成分。
 
-一般的に全天日射は直達成分と散乱成分の和として定義されるが，これは計測面が水平面（$GHI$）であるときを想定しており，水平面においては反射成分が計測面に入射することが無いためである。そのため計測面が傾斜しているときは，更に反射成分を加えたものを傾斜面日射（$H_{Ag}$）として定義する。
+一般的に全天日射は直達成分と散乱成分の和として定義されるが, これは計測面が水平面（$GHI$）であるときを想定しており, 水平面においては反射成分が計測面に入射することが無いためである。そのため計測面が傾斜しているときは, 更に反射成分を加えたものを傾斜面日射（$H_{Ag}$）として定義する。
 
 \begin{figure}[htbp]
     \centering
@@ -426,7 +426,7 @@ FIT制度開始から10年以上が経過し、図\ref{fig:world_pv_growth}に�
 \label{sec:各種天文的パラメータ算出} 
 %------------------------------------------------------------------------
 
-本項では日射データや気象に関する項目などを推定・算出するために必要な各種天文的パラメータ及び日射状況を表す指標の算出方法について示す[7]。
+本項では日射データや気象に関する項目などを推定・算出するために必要な各種天文的パラメータ及び日射状況を表す指標の算出方法について示す\cite{ref7}。
 
 \maru{1} 楕円軌道上の地球の位置：$\varGamma [\text{rad}]$
 \begin{equation}
@@ -530,7 +530,7 @@ FIT制度開始から10年以上が経過し、図\ref{fig:world_pv_growth}に�
 \label{sec:水平面散乱日射量推定} 
 %------------------------------------------------------------------------
 
-直達日射量の測定データがないため，測定水平面全天日射量$H_g$[kWh/m2]を直達成分と散乱成分に分離(直散分離)するべく，散乱成分(水平面散乱日射量$H_d$[kWh/m2])を推定する必要がある。推定にはアメリカ 4 都市にて測定されたデータを用いて作成された相関関係である Erbs モデルを用いる。相関関係を示すグラフを図\ref{fig:erbs_model}に示す。
+直達日射量の測定データがないため, 測定水平面全天日射量$H_g$[kWh/m2]を直達成分と散乱成分に分離(直散分離)するべく, 散乱成分(水平面散乱日射量$H_d$[kWh/m2])を推定する必要がある。推定にはアメリカ 4 都市にて測定されたデータを用いて作成された相関関係である Erbsモデル\cite{ref8}を用いる。相関関係を示すグラフを図\ref{fig:erbs_model}に示す。
 
 $CI \le 0.22$
 \begin{equation}
@@ -557,7 +557,7 @@ $0.80 < CI$
     \label{fig:erbs_model}
 \end{figure}
 
-次に，推定された水平面散乱日射量$H_d$を測定水平面全天日射量$H_g$から減算する要領で，直達日射量$H_b[\text{kWh/m}^2]$を推定する(式(\ref{eq:hb}))。
+次に, 推定された水平面散乱日射量$H_d$を測定水平面全天日射量$H_g$から減算する要領で, 直達日射量$H_b[\text{kWh/m}^2]$を推定する(式(\ref{eq:hb}))。
 
 \begin{equation}
 \begin{split}
@@ -572,46 +572,46 @@ $0.80 < CI$
 \label{sec:傾斜面散乱日射量推定} 
 %------------------------------------------------------------------------
 
-本項では傾斜面に入射する散乱成分(傾斜面散乱日射量$H_{Ad}$[kWh/m2])を推定する。推定にはPerezモデルを用いいる。Perezモデルの概念図を図\ref{fig:Perez}に示す。
+本項では傾斜面に入射する散乱成分(傾斜面散乱日射量$H_{Ad}$[kWh/m2])を推定する。推定にはPérezモデル\cite{ref9,ref15}を用いる。Pérezモデルの概念図を図\ref{fig:Pérez}に示す。
 
 \begin{figure}[htbp]
     \centering
-    \includegraphics[width=1.0\textwidth]{foto/Perez.png}
-    \caption{Perezモデルの概念図}
-    \label{fig:Perez}
+    \includegraphics[width=1.0\textwidth]{foto/Pérez.png}
+    \caption{Pérezモデルの概念図}
+    \label{fig:Pérez}
 \end{figure}
 \FloatBarrier
 
-Perez モデルは、天空日射の散乱成分を「全天空一様な強さの散乱光($L$)」、「太陽周辺光($F'_1 \times L$, 視半径 $\alpha = 25 [\text{deg.}]$)」、および「地平線光($F'_2 \times L$, $\xi \sim 0$)」の3成分の和として表現するモデルである。
-ここで、$F'_1$ および $F'_2$ は入射光の状態（天頂角 $\theta_Z$、水平面散乱日射量 $H_d$、晴天度パラメータ $\epsilon$）に依存する係数であり、これらを用いることで、天空の状態を水平面全天日射量 $H_g$、水平面散乱日射量 $H_d$、および直達日射量 $H_b$ だけで表現することが可能となる。係数 $F'_1, F'_2$ の算出式を式(\ref{eq:perez_f1})に示す。
+Pérezモデルは、天空日射の散乱成分を「全天空一様な強さの散乱光($L$)」、「太陽周辺光($F'_1 \times L$, 視半径 $\alpha = 25 [\text{deg.}]$)」、および「地平線光($F'_2 \times L$, $\xi \sim 0$)」の3成分の和として表現するモデルである。
+ここで、$F'_1$ および $F'_2$ は入射光の状態（天頂角 $\theta_Z$、水平面散乱日射量 $H_d$、晴天度パラメータ $\epsilon$）に依存する係数であり、これらを用いることで、天空の状態を水平面全天日射量 $H_g$、水平面散乱日射量 $H_d$、および直達日射量 $H_b$ だけで表現することが可能となる。係数 $F'_1, F'_2$ の算出式を式(\ref{eq:Pérez_f1})に示す。
 
 \begin{equation}
 \begin{split}
     F'_1 &= F'_{11}(\epsilon) + F'_{12}(\epsilon) \cdot \Delta + F'_{13}(\epsilon) \cdot \theta_Z \\
     F'_2 &= F'_{21}(\epsilon) + F'_{22}(\epsilon) \cdot \Delta + F'_{23}(\epsilon) \cdot \theta_Z
 \end{split}
-\label{eq:perez_f1}
+\label{eq:Pérez_f1}
 \end{equation}
 
-ここで、$\Delta$ は散乱光パラメータ、$\epsilon$ は晴天度パラメータの算出式をそれぞれ式(\ref{eq:perez_epsilon})、式(\ref{eq:perez_AM_A})に示す。
+ここで、$\Delta$ は散乱光パラメータ、$\epsilon$ は晴天度パラメータの算出式をそれぞれ式(\ref{eq:Pérez_epsilon})、式(\ref{eq:Pérez_AM_A})に示す。
 
 \begin{equation}
     \epsilon = \frac{H_d + H_b}{H_d}
-\label{eq:perez_epsilon}
+\label{eq:Pérez_epsilon}
 \end{equation}
 
 \begin{equation}
     \Delta = AM_A \cdot \frac{H_d}{H_0}
-\label{eq:perez_AM_A}
+\label{eq:Pérez_AM_A}
 \end{equation}
 
-また、$F'_{11}(\epsilon), F'_{12}(\epsilon), \dots, F'_{23}(\epsilon)$ は晴天度 $\epsilon$ に依存する係数であり、表\ref{tab:perez_coeffs}に対応する値を用いる。これらの値は、フランスのTrappesおよびCarpentrasにおける5つの傾斜面の時積算全天日射量の3年分のデータを用いて導出されたものである。
+また、$F'_{11}(\epsilon), F'_{12}(\epsilon), \dots, F'_{23}(\epsilon)$ は晴天度 $\epsilon$ に依存する係数であり、表\ref{tab:Pérez_coeffs}に対応する値を用いる。これらの値は、フランスのTrappesおよびCarpentrasにおける5つの傾斜面の時積算全天日射量の3年分のデータを用いて導出されたものである。
 
 \begin{table}[hbt]
     \centering
-    \caption{Perezモデルのパラメータ}
-    \label{tab:perez_coeffs}
-    \renewcommand{\arraystretch}{1.3} % 增加行高，防止数字太挤
+    \caption{Pérezモデルのパラメータ}
+    \label{tab:Pérez_coeffs}
+    \renewcommand{\arraystretch}{1.3} % 增加行高, 防止数字太挤
     \small
     \begin{tabular}{c|rrrrrr}
         \hline
@@ -630,13 +630,13 @@ Perez モデルは、天空日射の散乱成分を「全天空一様な強さ�
 \end{table}
 \FloatBarrier
 
-以上の係数を用いた，傾斜面散乱日射量$H_{Ad}$の推定式を定義する。
+以上の係数を用いた, 傾斜面散乱日射量$H_{Ad}$の推定式を定義する。
 
 \begin{equation}
     H_{Ad} = H_d \left[ 0.5 \cdot (1 + \cos\beta) \cdot (1 - F'_1) + F'_1 \cdot \left( \frac{\chi_c}{\chi_h} \right) + F'_2 \cdot \sin\beta \right]
 \end{equation}
 
-ここで$\chi_c$および$\chi_h$はそれぞれ式(\ref{eq:perez_chi_c})および式(\ref{eq:perez_chi_h})で求まる。
+ここで$\chi_c$および$\chi_h$はそれぞれ式(\ref{eq:Pérez_chi_c})および式(\ref{eq:Pérez_chi_h})で求まる。
 
 \begin{equation}
     \chi_c = 
@@ -645,7 +645,7 @@ Perez モデルは、天空日射の散乱成分を「全天空一様な強さ�
         \psi_h \cdot \psi_c \cdot \sin(\psi_c \cdot \alpha) & (\frac{\pi}{2} - \alpha \le \theta \le \frac{\pi}{2} + \alpha) \\
         0 & (\frac{\pi}{2} + \alpha < \theta)
     \end{cases}
-    \label{eq:perez_chi_c}
+    \label{eq:Pérez_chi_c}
 \end{equation}
 
 \begin{equation}
@@ -654,10 +654,10 @@ Perez モデルは、天空日射の散乱成分を「全天空一様な強さ�
         \cos\theta_Z & (\theta_Z < \frac{\pi}{2} - \alpha) \\
         \psi_h \cdot \sin(\psi_c \cdot \alpha) & (\frac{\pi}{2} - \alpha \le \theta_Z)
     \end{cases}
-    \label{eq:perez_chi_h}
+    \label{eq:Pérez_chi_h}
 \end{equation}
 
-ただし$\theta$は入射角[rad.]，$\theta_Z$は天頂角[rad.]，$\alpha$は太陽の視半径($= 0.436[\text{rad.}]$)である。また$\psi_c$および$\psi_h$はそれぞれ太陽周辺光部分が斜面で隠れない割合と水平線上に出ている割合相当するものであり，次のように表される。
+ただし$\theta$は入射角[rad.], $\theta_Z$は天頂角[rad.], $\alpha$は太陽の視半径($= 0.436[\text{rad.}]$)である。また$\psi_c$および$\psi_h$はそれぞれ太陽周辺光部分が斜面で隠れない割合と水平線上に出ている割合相当するものであり, 次のように表される。
 
 \begin{equation}
     \psi_c = \frac{\frac{\pi}{2} - \theta + \alpha}{2\alpha}
@@ -676,7 +676,7 @@ Perez モデルは、天空日射の散乱成分を「全天空一様な強さ�
 \label{sec:傾斜面直達日射量推定} 
 %------------------------------------------------------------------------
 
-本項では直達日射量$H_b$を用いて，傾斜面に入射する直達成分(傾斜面直達日射量$H_{Ab}$)を推定する。
+本項では直達日射量$H_b$を用いて, 傾斜面に入射する直達成分(傾斜面直達日射量$H_{Ab}$)を推定する。
 
 \begin{equation}
     H_{Ab} = H_b \cdot \cos \theta
@@ -722,7 +722,7 @@ H_{Ag} = H_{Ad} + H_{Ab} + H_{Ar}
 
 システム固有のその他損失係数（$K_O(t)$）を正確に算出するためには、気象観測地点と発電システム地点が天気状態が一致な「晴天日」のデータを抽出する必要がある。本手法の構築における最大の制約は、発電所現地に日射計が設置されていない点にある。そのため、代替として気象庁のアメダス等の遠隔地点で観測された水平面全天日射量データを使用せざるを得ないが、観測地点と発電所間の地理的距離（数\,km-数十\,km）に起因する天候の非一致性が課題となる。局所的な気象変化により、観測地点が晴天であっても発電所上空のみに雲がかかっている場合、遠隔地の $GHI$ をそのまま適用すると、発電電力の低下が設備の不具合によるものか、あるいは単なる日陰によるものかを判別できず、データの信頼性が著しく低下する。この過程は\ref{fig:simirarity}に示す。
 
-この課題を解決するため、本研究では $GHI$ と対象システムの発電電力（$P_{DC}$）の時系列波形の類似性に着目し、コサイン類似度（Cosine Similarity）を用いたフィルタリング手法を採用した。理想的な晴天日において、$GHI$ と $P_{DC}$ はともに太陽の高度角の変化に従い、滑らかな「ベル型」の波形を描く。観測地点と発電所が離れていても、広域的に快晴である日は両地点で同様の滑らかな波形が観測されるため、形が高度に一致する日のみを選別することで、遠隔地の気象データを現地の正解的な気象データとして代用する際の妥当性を確保できる。
+この課題を解決するため、本研究では $GHI$ と対象システムの発電電力（$P_{DC}$）の時系列波形の類似性に着目し\cite{ref10}、コサイン類似度（Cosine Similarity）を用いたフィルタリング手法\cite{ref10}を採用した。理想的な晴天日において、$GHI$ と $P_{DC}$ はともに太陽の高度角の変化に従い、滑らかな「ベル型」の波形を描く。観測地点と発電所が離れていても、広域的に快晴である日は両地点で同様の滑らかな波形が観測されるため、形が高度に一致する日のみを選別することで、遠隔地の気象データを現地の正解的な気象データとして代用する際の妥当性を確保できる。
 
 具体的には、ある日における日の出から日の入りまでのデータベクトルをそれぞれ $\vec{P_{DC}}$、$\vec{GHI}$ としたとき、その類似度 $Similarity$ は次式で定義される。
 
@@ -844,7 +844,7 @@ PVシステムの発電電力 $P_{DC}(t)$ [W] は、傾斜面日射量 $H_{Ag}$ 
 
 この物理的な限界を克服するため、本研究で物理モデルとデータ駆動型モデルを組み合わせたハイブリッド推論モデルを構築した。出力域（$P_{\mathrm{DC}} > 0\,\mathrm{W}$）では物理モデルを優先的に適用し、システムの熱力学的特性に基づいた高精度な逆推定を行う一方、低照度域（$P_{\mathrm{DC}} \leq 0\,\mathrm{W}$）においては、出力電圧 $V_{\mathrm{DC}}$ と出力電力 $P_{\mathrm{DC}}$ を特徴量とした機械学習モデル（ランダムフォレスト等）を併用する。
 
-低照度域において電圧情報を活用する理論的根拠は、太陽電池の出力特性（$I$-$V$ 特性）に由来する。太陽電池の開放電圧は水平面日射量の対数に比例して上昇するため、電流がほとんど流れない極低照度時であっても、電圧値には水平面日射量の変化が感度良く反映される。この特性を利用し、過去の膨大な学習データから「電圧・電力・時間の相関関係」を機械学習によりモデル化することで、物理モデルでは捉えきれないPCSの起動境界付近の日射量を精度良く推定することが可能となる。この手法により、PCSの動作点や非線形な変換効率に左右されることなく、日出から日没までの全時間帯において、連続的かつ安定した $GHI$ の推定精度を確保している。
+低照度域において電圧情報を活用する理論的根拠は、太陽電池の出力特性（$I$-$V$ 特性）に由来する。太陽電池の開放電圧は水平面日射量の対数に比例して上昇するため、電流がほとんど流れない極低照度時であっても、電圧値には水平面日射量の変化が感度良く反映される。この特性を利用し、過去の膨大な学習データから「電圧・電力・時間の相関関係」を機械学習によりモデル化することで、物理モデルでは捉えきれないPCSの起動境界付近の日射量を精度良く推定することが可能となる\cite{ref13,ref14}。この手法により、PCSの動作点や非線形な変換効率に左右されることなく、日出から日没までの全時間帯において、連続的かつ安定した $GHI$ の推定精度を確保している。
 
 %************************************************************************
 \section{システム相互比較のメカニズム}
@@ -1014,7 +1014,7 @@ PVシステムの発電電力 $P_{DC}(t)$ [W] は、傾斜面日射量 $H_{Ag}$ 
     \caption{動的選択アルゴリズムのイメージ図}
     \label{fig:dynamic_selection}
 \end{figure}
-\FloatBarrier  % <--- 强制在此之前的所有图片必须输出，不能漂到这里之后
+\FloatBarrier  % <--- 强制在此之前的所有图片必须输出, 不能漂到这里之后
 
 %************************************************************************
 \section{定常日陰検出モデル}
@@ -1117,7 +1117,7 @@ Mask(\phi, \alpha) =
     \caption{山梨県北杜市長坂町における解析対象発電所の航空写真}
     \label{fig:hokuto_aerial}
 \end{figure}
-\FloatBarrier  % <--- 强制在此之前的所有图片必须输出，不能漂到这里之后
+\FloatBarrier  % <--- 强制在此之前的所有图片必须输出, 不能漂到这里之后
 
 %------------------------------------------------------------------------
 \subsection{PVシステム構成と設備情報}
@@ -1148,7 +1148,7 @@ Mask(\phi, \alpha) =
         37 & Suntech & 多結晶 & 10.80 & 0 & 30.0 & -0.49 \\ \hline
     \end{tabular}
 \end{table}
-\FloatBarrier  % <--- 强制在此之前的所有图片必须输出，不能漂到这里之后
+\FloatBarrier  % <--- 强制在此之前的所有图片必须输出, 不能漂到这里之后
 
 %------------------------------------------------------------------------
 \subsection{計測データの特性と前処理}
@@ -2135,11 +2135,35 @@ Dataset Aと同様に、ここでも日射強度に応じた系統的なバイ�
     経済産業省 調達価格等算定委員会: 令和6年度以降の調達価格等に関する意見, 2024.
 
     \bibitem{ref6}
-    JIS C8960，太陽光発電用語，2012.
+    JIS C8960, 太陽光発電用語, 2012.
 
     \bibitem{ref7}
     株式会社気象データシステム.“技術資料：天文的パラメータ及び日射状況を表す指標の算出方法”.2020
 
+    \bibitem{ref8}
+    D.G.Erbs, et.al., Estimation of the diffuse radiation fraction for hourly, daily, and monthly-average global radiation, Solar Energy Vol.28 (4) pp.293-302(1982)
 
+    \bibitem{ref9}
+    Perez, Richard, et al. "All-weather Model for Sky Luminance Distribution—Preliminary Configuration and Validation." Solar Energy, vol. 50, no. 3, 1993, pp. 235-45. ScienceDirect, https://doi.org/10.1016/0038-092X(93)90017-I.
+
+    \bibitem{ref10}
+    Hertsberg, Axel. "A statistical approach for assessing cloud conditions using photovoltaic solar electricity production data." (2019).
+    
+    \bibitem{ref11}
+    Engerer, N. A., and F. P. Mills. "KPV: A Clear-sky Index for Photovoltaics." Solar Energy, vol. 105, 2014, pp. 679-93. ScienceDirect, https://doi.org/10.1016/j.solener.2014.04.019.
+
+    \bibitem{ref12}
+    Killinger, Sven, et al. "On the Search for Representative Characteristics of PV Systems: Data Collection and Analysis of PV System Azimuth, Tilt, Capacity, Yield and Shading." Solar Energy, vol. 173, 2018, pp. 1087-1106. ScienceDirect, https://doi.org/10.1016/j.solener.2018.08.051.
+
+    \bibitem{ref13}
+    Meyer, A. J., and A. C. Brent. "The Integration of Solar Irradiance Models with a Photovoltaic System Model: A Review." Journal of Energy in Southern Africa, vol. 20, no. 4, 2009, pp. 10-18. JESA Archive, https://journals.assaf.org.za/jesa/article/view/2196.
+
+    \bibitem{ref14}
+    Rajagukguk, Ruben A., et al. "A Review on Deep Learning Models for Forecasting Time Series Data of Solar Irradiance and Photovoltaic Power." Energies, vol. 13, no. 24, 2020, p. 6623. MDPI, https://doi.org/10.3390/en13246623.
+    
+    \bibitem{ref15}
+    Elsinga, Boudewijn, Wilfried van Sark, and Lou Ramaekers. "Inverse photovoltaic yield model for global horizontal irradiance reconstruction." Energy Science \& Engineering, vol. 5, no. 5, 7 Aug. 2017, pp. 882–891, https://doi.org/10.1002/ese3.162.
+
+    
 \end{thebibliography}
 \end{document}
